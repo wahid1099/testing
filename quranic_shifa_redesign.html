@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কোরআনিক শিফা (Quranic Shifa) - রুকইয়াহ শরীহ ও কোরআনভিত্তিক চিকিৎসা কেন্দ্র</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldTheme: {
+                            DEFAULT: '#123F32',
+                            dark: '#0D2D24',
+                            light: '#1B5B49',
+                        },
+                        ivory: {
+                            DEFAULT: '#F5F1E7',
+                            light: '#FAF8F3',
+                            dark: '#EAE2CD',
+                        },
+                        gold: {
+                            DEFAULT: '#C6A66A',
+                            light: '#D9BE84',
+                            dark: '#B08F4E',
+                        },
+                        darkSection: '#263B32',
+                    },
+                    fontFamily: {
+                        bengali: ['"Hind Siliguri"', '"Noto Sans Bengali"', 'sans-serif'],
+                        english: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Hind Siliguri & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Hind Siliguri', 'Inter', sans-serif;
+            background-color: #F5F1E7;
+            color: #1a2e26;
+        }
+        .islamic-pattern {
+            background-image: radial-gradient(#123F32 0.75px, transparent 0.75px), radial-gradient(#123F32 0.75px, #F5F1E7 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            opacity: 0.04;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0D2D24 0%, #123F32 50%, #1B5B49 100%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F5F1E7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #123F32;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-ivory text-emeraldTheme-dark min-h-screen flex flex-col selection:bg-gold selection:text-white">
+
+    <!-- Top Sticky Notification Bar -->
+    <div class="bg-emeraldTheme-dark text-ivory text-xs sm:text-sm py-2 px-4 border-b border-gold/30 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-gold animate-ping"></span>
+                <span><strong>জরুরি নোটিশ:</strong> প্রতি শুক্রবার ও সোমবার চেম্বার বন্ধ থাকে। চিকিৎসা পেতে সিরিয়াল বাধ্যতামূলক (সিরিয়ালের জন্য কোনো ফি নেওয়া হয় না)।</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="tel:+8809639217058" class="text-gold hover:underline flex items-center gap-1 font-semibold">
+                    <i data-lucide="phone" class="w-3.5 h-3.5"></i> +8809639217058
+                </a>
+                <span class="hidden md:inline text-gold/50">|</span>
+                <span class="hidden md:inline text-ivory/80">অফলাইন চিকিৎসা সেবা (অনলাইন চিকিৎসা নেই)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="bg-emeraldTheme text-white sticky top-[37px] sm:top-[41px] z-40 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo & Name -->
+                <a href="#home" onclick="router('home')" class="flex items-center gap-3 group">
+                    <div class="w-12 h-12 rounded-full bg-gold/20 border-2 border-gold flex items-center justify-center text-gold shadow-inner group-hover:scale-105 transition-transform">
+                        <i data-lucide="book-open-check" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-bold tracking-wide text-ivory">কোরআনিক শিফা</h1>
+                        <p class="text-xs text-gold tracking-widest uppercase">Quranic Shifa • Est. 2013</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+                    <button onclick="router('home')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium transition-all text-ivory hover:bg-emeraldTheme-light hover:text-gold" data-route="home">প্রচ্ছদ</button>
+                    <button onclick="router('services')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium transition-all text-ivory hover:bg-emeraldTheme-light hover:text-gold" data-route="services">সেবাসমূহ</button>
+                    <button onclick="router('about')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium transition-all text-ivory hover:bg-emeraldTheme-light hover:text-gold" data-route="about">পরিচিতি</button>
+                    <button onclick="router('blog')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium transition-all text-ivory hover:bg-emeraldTheme-light hover:text-gold" data-route="blog">পড়ুন</button>
+                    <button onclick="router('interview')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium transition-all text-ivory hover:bg-emeraldTheme-light hover:text-gold" data-route="interview">সাক্ষাৎকার</button>
+                    <button onclick="router('contact')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium transition-all text-ivory hover:bg-emeraldTheme-light hover:text-gold" data-route="contact">যোগাযোগ</button>
+                </nav>
+
+                <!-- Action CTA & Mobile Toggle -->
+                <div class="flex items-center gap-3">
+                    <button onclick="router('appointment')" class="hidden sm:inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-emeraldTheme-dark font-bold px-5 py-2.5 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-sm">
+                        <i data-lucide="calendar" class="w-4 h-4"></i>
+                        <span>সিরিয়াল বুকিং</span>
+                    </button>
+                    
+                    <!-- Mobile Hamburger Button -->
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-ivory hover:bg-emeraldTheme-light focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-emeraldTheme-dark border-t border-emeraldTheme-light px-4 pt-3 pb-5 space-y-2 shadow-2xl">
+            <button onclick="router('home'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-ivory hover:bg-emeraldTheme hover:text-gold">প্রচ্ছদ</button>
+            <button onclick="router('services'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-ivory hover:bg-emeraldTheme hover:text-gold">সেবাসমূহ</button>
+            <button onclick="router('about'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-ivory hover:bg-emeraldTheme hover:text-gold">পরিচিতি</button>
+            <button onclick="router('blog'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-ivory hover:bg-emeraldTheme hover:text-gold">পড়ুন</button>
+            <button onclick="router('interview'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-ivory hover:bg-emeraldTheme hover:text-gold">সাক্ষাৎকার</button>
+            <button onclick="router('contact'); toggleMobileMenu();" class="block w-full text-left px-4 py-2.5 rounded-lg text-base font-medium text-ivory hover:bg-emeraldTheme hover:text-gold">যোগাযোগ</button>
+            <div class="pt-2 border-t border-emeraldTheme-light">
+                <button onclick="router('appointment'); toggleMobileMenu();" class="w-full flex items-center justify-center gap-2 bg-gold text-emeraldTheme-dark font-bold px-4 py-3 rounded-xl shadow">
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                    <span>সিরিয়াল বুকিং করুন</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Content Container -->
+    <main id="app-content" class="flex-grow">
+        <!-- Content will be rendered dynamically by JavaScript router -->
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="bg-emeraldTheme-dark text-ivory/80 pt-16 pb-8 border-t-4 border-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Column 1: Brand -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gold/20 border border-gold flex items-center justify-center text-gold">
+                            <i data-lucide="book-open-check" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-ivory">কোরআনিক শিফা</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed text-ivory/70">
+                        ২০১৩ সাল থেকে পবিত্র কুরআন ও সুন্নাহর আলোকে কুফর, যাদু, বদনজর, জিন আসর এবং বিভিন্ন জটিল ও রহস্যময় শারীরিক-মানসিক সমস্যার শরয়ী রুকইয়াহ ও চিকিৎসা সেবা প্রদান করে আসছে।
+                    </p>
+                    <div class="pt-2 flex items-center gap-3 text-gold">
+                        <a href="tel:+8809639217058" class="w-9 h-9 rounded-full bg-emeraldTheme flex items-center justify-center hover:bg-gold hover:text-emeraldTheme-dark transition-colors" title="কল করুন">
+                            <i data-lucide="phone" class="w-4 h-4"></i>
+                        </a>
+                        <a href="mailto:info@qshifa.com" class="w-9 h-9 rounded-full bg-emeraldTheme flex items-center justify-center hover:bg-gold hover:text-emeraldTheme-dark transition-colors" title="ইমেইল পাঠান">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://m.me/qshifa" target="_blank" class="w-9 h-9 rounded-full bg-emeraldTheme flex items-center justify-center hover:bg-gold hover:text-emeraldTheme-dark transition-colors" title="মেসেঞ্জার">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links -->
+                <div>
+                    <h4 class="text-base font-bold text-gold mb-4 border-b border-emeraldTheme-light pb-2">দ্রুত লিংকসমূহ</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><button onclick="router('home')" class="hover:text-gold transition-colors">প্রচ্ছদ পাতা</button></li>
+                        <li><button onclick="router('services')" class="hover:text-gold transition-colors">সকল সেবাসমূহ ও ক্যাটাগরি</button></li>
+                        <li><button onclick="router('about')" class="hover:text-gold transition-colors">আমাদের পরিচিতি ও ইতিহাস</button></li>
+                        <li><button onclick="router('blog')" class="hover:text-gold transition-colors">শিক্ষামূলক আর্টিকেল ও প্রবন্ধ</button></li>
+                        <li><button onclick="router('appointment')" class="hover:text-gold transition-colors">সিরিয়াল বুকিং নিয়মাবলী</button></li>
+                        <li><button onclick="router('contact')" class="hover:text-gold transition-colors">যোগাযোগ ও লোকেশন</button></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact & Chamber -->
+                <div>
+                    <h4 class="text-base font-bold text-gold mb-4 border-b border-emeraldTheme-light pb-2">প্রধান চেম্বারের ঠিকানা</h4>
+                    <ul class="space-y-3 text-sm text-ivory/80">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-gold shrink-0 mt-0.5"></i>
+                            <span>বাড়ি: ১৩ (অস্থায়ী নিবাস), রোড -১, চিটাগাংরোড, মাদানীনগর, নারায়ণগঞ্জ। (সিলেট শাখা রয়েছে)।</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="phone-call" class="w-4 h-4 text-gold shrink-0"></i>
+                            <span class="font-semibold text-ivory">+8809639217058</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4 text-gold shrink-0"></i>
+                            <span>info@qshifa.com</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i data-lucide="clock" class="w-4 h-4 text-gold shrink-0"></i>
+                            <span>বন্ধ: প্রতি শুক্রবার ও সোমবার</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Newsletter & Medical Disclaimer -->
+                <div>
+                    <h4 class="text-base font-bold text-gold mb-4 border-b border-emeraldTheme-light pb-2">নিউজলেটার ও আপডেট</h4>
+                    <p class="text-xs text-ivory/70 mb-3">আমাদের নতুন আর্টিকেল ও নোটিশ পেতে আপনার ইমেইল সাবস্ক্রাইব করুন।</p>
+                    <form onsubmit="handleNewsletter(event)" class="space-y-2">
+                        <input type="email" id="newsletter-email" placeholder="আপনার ইমেইল ঠিকানা দিন" required class="w-full px-3 py-2 bg-emeraldTheme border border-emeraldTheme-light rounded-lg text-sm text-ivory placeholder-ivory/50 focus:outline-none focus:border-gold">
+                        <button type="submit" class="w-full bg-gold hover:bg-gold-light text-emeraldTheme-dark font-bold py-2 rounded-lg text-sm transition-colors shadow">সাবস্ক্রাইব করুন</button>
+                    </form>
+                    <div id="newsletter-msg" class="text-xs mt-2 text-gold font-medium"></div>
+                </div>
+            </div>
+
+            <!-- Bottom Disclaimer & Copyright -->
+            <div class="pt-8 border-t border-emeraldTheme-light text-center text-xs text-ivory/60 space-y-3">
+                <div class="bg-emeraldTheme/60 p-3 rounded-lg border border-gold/20 max-w-4xl mx-auto text-ivory/80">
+                    <strong>চিকিৎসা সতর্কতা:</strong> কোরআনিক শিফা একটি শরয়ী রুকইয়াহ ও কুরআনভিত্তিক কেন্দ্র। এটি কোনো প্রচলিত হাসপাতাল বা মেডিকেল নয়। তীব্র শারীরিক বা জরুরি মেডিকেল সমস্যায় অবশ্যই রেজিস্টার্ড চিকিৎসকের কাছে যান। আমাদের কোনো অনলাইন চিকিৎসা সেবা নেই।
+                </div>
+                <p>&copy; ২০২৬ কোরআনিক শিফা (Quranic Shifa). সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Application Logic -->
+    <script>
+        // Data Store & State
+        const state = {
+            currentRoute: 'home',
+            selectedBlogId: null,
+            selectedServiceCategory: null,
+            bookingSubmitted: false,
+            interviewSubmitted: false,
+            contactSubmitted: false,
+        };
+
+        // Static Data preserving exact original content
+        const notices = [
+            "প্রতি শুক্রবার ও সোমবার চেম্বার বন্ধ থাকে।",
+            "চিকিৎসা নিতে হলে অবশ্যই সিরিয়াল নিতে হবে।",
+            "সিরিয়াল নিতে কোনো ফি নেওয়া হয় না (সম্পূর্ণ বিনামূল্যে)।",
+            "সরাসরি অফিসে এসে সিরিয়াল নিশ্চিত করা যায় না।",
+            "আমাদের কোনো অনলাইন চিকিৎসা নেই।",
+            "এটি কোনো মেডিকেল বা জরুরি চিকিৎসা কেন্দ্র নয়।",
+            "সকল প্রকার প্রতারণা ও ভুয়া দালাল থেকে সতর্ক থাকুন।",
+            "অফিসিয়াল হেল্পলাইন নম্বর: ০ই৯৬৩৯২১৭০৫৮ (+8809639217058)।"
+        ];
+
+        const serviceCategories = [
+            {
+                id: 'physical',
+                title: 'শারীরিক সমস্যা',
+                icon: 'activity',
+                desc: 'রহস্যময় শারীরিক ব্যথা, অবশ ভাব, শরীরের নির্দিষ্ট অংশ ভারী হওয়া, দীর্ঘমেয়াদী মাথা ব্যথা ও চিকিৎসায় ভালো না হওয়া শারীরিক জটিলতা।',
+                problems: [
+                    'রহস্যময় ও দীর্ঘস্থায়ী শারীরিক ব্যথা যা ডাক্তারি চিকিৎসায় ভালো হয় না',
+                    'শরীরের কোনো অংশ অবশ বা দুর্বল অনুভূত হওয়া',
+                    'হঠাৎ করে শরীরের ওজন হ্রাস বা বৃদ্ধি ও শক্তিহীনতা',
+                    'অকারণ কাঁপুনি, খিঁচুনি বা খিদে না লাগার সমস্যা',
+                    'ঘুমের মধ্যে দম আটকে আসার অনুভূতি বা বুক ধড়ফড় করা'
+                ]
+            },
+            {
+                id: 'mental',
+                title: 'মানসিক ও আবেগজনিত সমস্যা',
+                icon: 'brain',
+                desc: 'অতিরিক্ত দুশ্চিন্তা, ভয় কাজ করা, বিষণ্ণতা, অমূলক সন্দেহ, এবং আকস্মিক আবেগ নিয়ন্ত্রণহীনতা।',
+                problems: [
+                    'অতিরিক্ত দুশ্চিন্তা, আতঙ্ক ও بلا কারণ ভয় কাজ করা',
+                    'সব সময় মন খারাপ বা গভীর বিষণ্ণতা (Depression) থাকা',
+                    'অমূলক সন্দেহপ্রবণতা ও অহেতুক রাগ বা জেদ হওয়া',
+                    'একা থাকতে ভয় পাওয়া বা জনমানবহীন স্থান এড়িয়ে চলা',
+                    'স্মৃতিশক্তি হঠাৎ হ্রাস পাওয়া বা কাজে মনোযোগের অভাব'
+                ]
+            },
+            {
+                id: 'family',
+                title: 'পারিবারিক ও সামাজিক সমস্যা',
+                icon: 'users',
+                desc: 'স্বামী-স্ত্রীর মধ্যে বিনা কারণে অমিল, দূরত্ব, পরিবারের সদস্যদের মধ্যে অনীহা ও পারিবারিক অশান্তি।',
+                problems: [
+                    'স্বামী-স্ত্রীর মাঝে বিনা কারণে তীব্র দূরত্ব ও দূরত্ব সৃষ্টি হওয়া',
+                    'সংসারে সবসময় অশান্তি ও ছোটখাটো বিষয়ে বড় ঝগড়া হওয়া',
+                    'সন্তান বা পরিবারের কারো অবাধ্যতা ও চরম উদাসীনতা',
+                    'আত্মীয়-স্বজনের সাথে বিনা কারণে ভুল বোঝাবুঝি ও দূরত্ব',
+                    'বিয়েতে অপ্রাকৃতিক বাধা বা বারবার সম্বন্ধ ভেঙে যাওয়া'
+                ]
+            },
+            {
+                id: 'financial',
+                title: 'পেশাগত ও আর্থিক সমস্যা',
+                icon: 'briefcase',
+                desc: 'ব্যবসায় অপ্রত্যাশিত লোকসান, উপার্জনে বরকত না থাকা, চাকরির ক্ষেত্রে আকস্মিক বাধা।',
+                problems: [
+                    'ব্যবসায় ক্রমাগত অপ্রত্যাশিত লোকসান ও মূলধন হারিয়ে যাওয়া',
+                    'উপার্জন থাকা সত্ত্বেও হাতে টাকা না টেকা বা বরকত না হওয়া',
+                    'চাকরি বা কর্মক্ষেত্রে যোগ্যতা থাকা সত্ত্বেও পদে পদে বাধা পাওয়া',
+                    'ধার-দেনা ও ঋণের জালে জড়িয়ে পড়া এবং বের হতে না পারা',
+                    'কাজে অনীহা ও অলসতা ভর করা'
+                ]
+            },
+            {
+                id: 'spiritual',
+                title: 'আধ্যাত্মিক বা জিন-যাদুর সমস্যা',
+                icon: 'shield-alert',
+                desc: 'কালো যাদু (Magic), বদনজর (Evil Eye), এবং জিন আসর বা প্রভাবজনিত বিভিন্ন জটিলতা।',
+                problems: [
+                    'কালো জাদু বা কুফরি প্রভাবে জীবন বিপর্যস্ত হওয়া',
+                    'বদনজর বা ইর্ষাকাতর দৃষ্টির শিকার হয়ে হঠাৎ বড় ক্ষতি হওয়া',
+                    'জিন আসর বা আসমানী/জমিনী প্রভাবের লক্ষণ দেখা দেওয়া',
+                    'পবিত্র কোরআন তেলাওয়াত শুনলে বা গায়ে পানি লাগলে অস্বাভাবিক প্রতিক্রিয়া হওয়া',
+                    'স্বপ্নে ভয়ংকর বা আতঙ্কজনক দৃশ্য বারবার দেখা'
+                ]
+            },
+            {
+                id: 'personal',
+                title: 'ব্যক্তিগত সমস্যা',
+                icon: 'user-x',
+                desc: 'একাকীত্ব, ইবাদতে অমনোযোগিতা, অলসতা এবং আত্মিক প্রশান্তির অভাব।',
+                problems: [
+                    'নামাজ ও ইবাদত বন্দেগীতে চরম অনীহা ও অলসতা',
+                    'সব সময় মানসিক অস্থিরতা ও আত্মিক প্রশান্তির অভাব',
+                    'অতিরিক্ত একা থাকতে ভালো লাগা এবং সামাজিক যোগাযোগ এড়িয়ে চলা',
+                    'অনিদ্রা বা রাতে বারবার ঘুম ভেঙে যাওয়ার সমস্যা',
+                    'নিজের ওপর নিয়ন্ত্রণ হারিয়ে ফেলার অনুভূতি'
+                ]
+            }
+        ];
+
+        const blogs = [
+            {
+                id: 1,
+                title: "বাংলাদেশে কোরআনিক শিফার প্রয়োজনীয়তা ও গুরুত্বপূর্ণ কেন?",
+                date: "১৫ জানুয়ারি ২০২৬",
+                category: "নীতিমালা ও প্রয়োজন",
+                readTime: "৫ মিনিট",
+                image: "https://placehold.co/600x400/123F32/F5F1E7?text=Quranic+Shifa+Need",
+                excerpt: "সমাজে কুসংস্কার ও ভুয়া কবিরাজি থেকে মুক্ত হয়ে সুন্নাহসম্মত উপায়ে রুকইয়াহ চর্চার গুরুত্ব ও প্রয়োজনীয়তা।",
+                content: "বাংলাদেশে দীর্ঘদিন ধরে কবিরাজি ও তাবিজ-কবচের নামে একশ্রেণির প্রতারক সাধারণ মানুষের সরলতার সুযোগ নিয়ে অর্থ ও ইমানের ক্ষতি করে আসছে। এই প্রেক্ষাপটে ২০১৩ সাল থেকে 'কোরআনিক শিফা' সম্পূর্ণ শিরক, কুফর ও বিদআত মুক্ত পন্থায় একমাত্র কুরআন ও সুন্নাহর আলোকে রুকইয়াহ শরীহ পরিচালনা করে আসছে। কোরআনিক শিফার মূল লক্ষ্য হলো মানুষকে ভুয়া তুকতাক ও কবিরাজি থেকে ফিরিয়ে এনে পবিত্র কালামুল্লাহর মাধ্যমে আত্মিক ও শারীরিক শান্তি লাভে সহায়তা করা। এখানে কোনো প্রকার তাবিজ, সুতা বা সন্দেহজনক ঝাড়ফুঁক করা হয় না, বরং সরাসরি আল্লাহর কালাম তেলাওয়াত করে রুকইয়াহ করা হয়।"
+            },
+            {
+                id: 2,
+                title: "কালো যাদু ও বদনজর থেকে মুক্তির কোরআনিক পদ্ধতি",
+                date: "১০ ফেব্রুয়ারি ২০২৬",
+                category: "রুকইয়াহ ও আমল",
+                readTime: "৭ মিনিট",
+                image: "https://placehold.co/600x400/1B5B49/F5F1E7?text=Black+Magic+Protection",
+                excerpt: "কালো যাদু এবং বদনজরের বাস্তব লক্ষণ ও কোরআনের আয়াতের মাধ্যমে এর থেকে নিরাপদ থাকার কার্যকরী উপায়।",
+                content: "কালো যাদু (سحر) ও বদনজর (عين) সত্য বিষয় যা মানবজীবনে মারাত্মক নেতিবাচক প্রভাব ফেলতে পারে। পবিত্র কুরআনে সূরা আল-বাকারা, সূরা আল-ফালাক ও সূরা আন-নাস-এ এসব আসমানী ও যান্ত্রিক ক্ষতিকর প্রভাব থেকে বাঁচার সুনির্দিষ্ট দিকনির্দেশনা দেওয়া হয়েছে। কোরআনিক শিফায় আমরা রোগীর ওপর কোনো তান্ত্রিক পদ্ধতি প্রয়োগ না করে কেবল রুকইয়াহ শরীহের মাধ্যমে সুন্নাহসম্মত পন্থায় চিকিৎসা প্রদান করি। নিয়মিত সকাল-সন্ধ্যার জিকির, আয়াতুল কুরসি এবং কুল আউযু বিরাব্বিল ফালাক ও নাস পাঠের মাধ্যমে যাদু ও বদনজর থেকে রক্ষা পাওয়া সম্ভব।"
+            },
+            {
+                id: 3,
+                title: "কোরআনিক শিফা: কুফর, শিরক ও বিদআত মুক্ত চিকিৎসা সেবা",
+                date: "২২ ফেব্রুয়ারি ২০২৬",
+                category: "আকিদা ও শরীয়ত",
+                readTime: "৬ মিনিট",
+                image: "https://placehold.co/600x400/263B32/F5F1E7?text=Shirk+Free+Healing",
+                excerpt: "ইসলামের মূল আকিদার সাথে সাংঘর্ষিক সমস্ত কুসংস্কার বর্জন করে বিশুদ্ধ কোরআনভিত্তিক রুকইয়াহর বিবরণ।",
+                content: "ইসলাম ধর্মে চিকিৎসা গ্রহণে শরীয়তের সীমারেখা অত্যন্ত স্পষ্ট। রাসূলুল্লাহ (সা.) এমন ঝাড়ফুঁক করার অনুমতি দিয়েছেন যাতে কোনো শিরক বা কুফরি শব্দ নেই। কিন্তু বর্তমান সমাজে কবিরাজরা জিন তাড়ানোর নামে নানা রকম শিরকি মন্ত্র, অদ্ভুত প্রতীক ও নিষিদ্ধ পদ্ধতি ব্যবহার করে থাকে। কোরআনিক শিফা সম্পূর্ণ শিরক ও বিদআত মুক্ত পরিবেশে কেবল কোরআনের আয়াত ও সহিহ হাদিসে বর্ণিত দোয়ার মাধ্যমে রুকইয়াহ পরিচালনা করে, যা রোগীর ইমান ও সুস্থতা উভয়কেই নিরাপদ রাখে।"
+            },
+            {
+                id: 4,
+                title: "বিশ্বাস ও সেবার মাধ্যমে কোরআনিক চিকিৎসা",
+                date: "০১ মার্চ ২০২৬",
+                category: "সেবা ও অভিজ্ঞতা",
+                readTime: "৪ মিনিট",
+                image: "https://placehold.co/600x400/0D2D24/F5F1E7?text=Faith+and+Service",
+                excerpt: "আল্লাহর ওপর তাওয়াক্কুল এবং কোরআনের শেফা লাভের অনন্য অভিজ্ঞতার গল্প ও মূলনীতি।",
+                content: "আল-কুরআন হলো মানবজাতির জন্য শিফা ও রহমত। আল্লাহ তাআলা ইরশাদ করেছেন—'আর আমি কোরআনে এমন কিছু নাজিল করি যা মুমিনদের জন্য শিফা ও রহমত।' কোরআনিক শিফায় আসার পর রোগীদের প্রথম কাজ হলো আল্লাহর ওপর অবিচল ভরসা রাখা এবং বিশ্বাস করা যে, শেফাদানকারী একমাত্র আল্লাহ। রুকইয়াহ কেবল একটি মাধ্যম মাত্র। আমাদের অভিজ্ঞতার আলোকে দেখা গেছে, যাদের ইমান ও তাওয়াক্কুল যত বেশি সুদৃঢ়, তারা তত দ্রুত এবং সহজে আল্লাহর রহমতে শিফা লাভ করেন।"
+            }
+        ];
+
+        const testimonials = [
+            {
+                name: "মো: আব্দুল্লাহ আল মামুন",
+                occupation: "ব্যবসায়ী, ঢাকা",
+                comment: "দীর্ঘদিন ধরে বহুমুখী শারীরিক ও মানসিক সমস্যায় ভুগেছিলাম। কোরআনিক শিফায় এসে সুন্নাহসম্মত রুকইয়াহ নেওয়ার পর আলহামদুলিল্লাহ এখন অনেক সুস্থ ও প্রশান্ত আছি। এখানে কোনো তাবিজ-কবচ বা বিদআত নেই, সম্পূর্ণ কোরআনের ওপর ভিত্তি করে চিকিৎসা দেওয়া হয়।",
+                rating: 5
+            },
+            {
+                name: "সাদিয়া সুলতানা",
+                occupation: "গৃহিণী, নারায়নগঞ্জ",
+                comment: "পারিবারিক অশান্তি ও অতিরিক্ত ভীতি কাজ করত। এখানকার নিয়মতান্ত্রিক সিরিয়াল প্রক্রিয়া এবং রুকইয়াহ সেশনগুলোর মাধ্যমে আল্লাহর রহমতে আমার মানসিক অবস্থা এখন দারুণ স্থিতিশীল। অত্যন্ত পেশাদার ও দ্বীনদার পরিবেশ।",
+                rating: 5
+            },
+            {
+                name: "হাফিজুর রহমান",
+                occupation: "শিক্ষক, সিলেট",
+                comment: "সিলেট শাখা ও প্রধান চেম্বারের কার্যক্রম সম্পর্কে জেনে আমি অত্যন্ত সন্তুষ্ট। তাদের সততা ও কোনো প্রকার ফি ছাড়া সিরিয়াল দেওয়ার নিয়মটি সাধারণ মানুষের প্রতি বড় উপকার। আল্লাহ তাদের কবুল করুন।",
+                rating: 5
+            }
+        ];
+
+        const faqs = [
+            {
+                q: "এই চিকিৎসা কার জন্য?",
+                a: "যাঁরা দীর্ঘমেয়াদী রহস্যময় শারীরিক ব্যথা, মানসিক অস্থিরতা, জিন-যাদুর প্রভাব, পারিবারিক অশান্তি বা বদনজরের শিকার এবং প্রচলিত ডাক্তারি চিকিৎসায় সন্তোষজনক সমাধান পাননি, তাঁদের জন্য কোরআনিক শিফার রুকইয়াহ সেবা উন্মুক্ত।"
+            },
+            {
+                q: "এই চিকিৎসার নিয়ম কি? অফিসে আসা কি জরুরি?",
+                a: "হ্যাঁ, আমাদের কোনো অনলাইন চিকিৎসা সেবা নেই। চিকিৎসা নিতে হলে প্রধান চেম্বারে সশরীরে উপস্থিত হতে হবে। প্রথমে নির্ধারিত নিয়মে ফ্রি সিরিয়াল নিতে হয়।"
+            },
+            {
+                q: "অফিসের ঠিকানা কোথায়? আপনাদের কোন শাখা আছে?",
+                a: "প্রধান চেম্বার: বাড়ি: ১৩ (অস্থায়ী নিবাস), রোড -১, চিটাগাংরোড, মাদানীনগর, নারায়ণগঞ্জ। এছাড়া আমাদের একটি সিলেট শাখা রয়েছে।"
+            },
+            {
+                q: "বিদেশ থেকে কি চিকিৎসা করানো যাবে?",
+                a: "যেহেতু আমাদের কোনো অনলাইন বা দূরবর্তী চিকিৎসা নেই, তাই সরাসরি চেম্বারে উপস্থিত না হয়ে বিদেশ থেকে চিকিৎসা গ্রহণ করা সম্ভব নয়। তবে প্রবাসীরা দেশে ফিরে আসার পর সিরিয়াল নিয়ে সেবা নিতে পারেন।"
+            }
+        ];
+
+        // Router Implementation
+        function router(route) {
+            state.currentRoute = route;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            renderApp();
+            updateNavActiveState();
+        }
+
+        function updateNavActiveState() {
+            document.querySelectorAll('.nav-link').forEach(btn => {
+                if(btn.dataset.route === state.currentRoute) {
+                    btn.classList.add('bg-emeraldTheme-light', 'text-gold');
+                } else {
+                    btn.classList.remove('bg-emeraldTheme-light', 'text-gold');
+                }
+            });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Main Render Dispatcher
+        function renderApp() {
+            const container = document.getElementById('app-content');
+            
+            if (state.currentRoute === 'home') {
+                container.innerHTML = renderHomePage();
+            } else if (state.currentRoute === 'services') {
+                container.innerHTML = renderServicesPage();
+            } else if (state.currentRoute === 'about') {
+                container.innerHTML = renderAboutPage();
+            } else if (state.currentRoute === 'blog') {
+                if (state.selectedBlogId !== null) {
+                    container.innerHTML = renderBlogDetailPage(state.selectedBlogId);
+                } else {
+                    container.innerHTML = renderBlogPage();
+                }
+            } else if (state.currentRoute === 'interview') {
+                container.innerHTML = renderInterviewPage();
+            } else if (state.currentRoute === 'contact') {
+                container.innerHTML = renderContactPage();
+            } else if (state.currentRoute === 'appointment') {
+                container.innerHTML = renderAppointmentPage();
+            } else {
+                container.innerHTML = renderNotFoundPage();
+            }
+            
+            // Re-initialize Lucide icons for newly rendered DOM
+            lucide.createIcons();
+        }
+
+        // ================= PAGE 1: HOME PAGE =================
+        function renderHomePage() {
+            return `
+                <!-- Hero Section -->
+                <section class="relative hero-gradient text-white py-20 lg:py-32 overflow-hidden">
+                    <div class="absolute inset-0 islamic-pattern"></div>
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                                <div class="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 px-4 py-1.5 rounded-full text-gold text-sm font-semibold">
+                                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                                    <span>কুরআন ও সুন্নাহ ভিত্তিক শরয়ী রুকইয়াহ কেন্দ্র</span>
+                                </div>
+                                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-ivory">
+                                    কোরআন দ্বারা <span class="text-gold">অলৌকিক নিরাময়</span> ও শান্তি
+                                </h1>
+                                <p class="text-lg sm:text-xl text-ivory/90 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                                    ২০১৩ সাল থেকে কুফর, যাদু, বদনজর, জিন আসর এবং জটিল মানসিক ও শারীরিক সমস্যায় আক্রান্তদের জন্য একমাত্র পবিত্র কালামুল্লাহর সাহায্যে রুকইয়াহ সেবা প্রদান করে আসছি।
+                                </p>
+                                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                                    <button onclick="router('appointment')" class="w-full sm:w-auto bg-gold hover:bg-gold-light text-emeraldTheme-dark font-bold px-8 py-4 rounded-xl shadow-xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 text-base">
+                                        <i data-lucide="calendar-plus" class="w-5 h-5"></i>
+                                        <span>বিনামূল্যে সিরিয়াল বুকিং</span>
+                                    </button>
+                                    <button onclick="router('about')" class="w-full sm:w-auto bg-emeraldTheme-light hover:bg-emeraldTheme-dark border border-gold/50 text-ivory font-semibold px-8 py-4 rounded-xl shadow transition-all flex items-center justify-center gap-3 text-base">
+                                        <i data-lucide="info" class="w-5 h-5"></i>
+                                        <span>আমাদের পরিচিতি জানুন</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-5 flex justify-center">
+                                <div class="relative w-full max-w-md bg-emeraldTheme-dark/80 backdrop-blur border-2 border-gold/40 rounded-3xl p-8 shadow-2xl text-ivory space-y-6">
+                                    <div class="w-16 h-16 rounded-2xl bg-gold/20 border border-gold flex items-center justify-center text-gold mx-auto">
+                                        <i data-lucide="award" class="w-8 h-8"></i>
+                                    </div>
+                                    <div class="text-center space-y-2">
+                                        <h3 class="text-2xl font-bold text-gold">বিশ্বস্ত ও পরীক্ষিত সেবা</h3>
+                                        <p class="text-sm text-ivory/80">শতভাগ শিরক ও বিদআত মুক্ত পরিবেশে কোরআনের আলোয় আত্মিক নিরাময়।</p>
+                                    </div>
+                                    <div class="border-t border-emeraldTheme-light pt-4 space-y-3 text-sm">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-ivory/75">প্রতিষ্ঠা সাল:</span>
+                                            <span class="font-bold text-gold">২০১৩ খ্রিষ্টাব্দ</span>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-ivory/75">প্রধান চেম্বার:</span>
+                                            <span class="font-semibold text-right">নারায়ণগঞ্জ, ঢাকা</span>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-ivory/75">হেল্পলাইন:</span>
+                                            <span class="font-semibold text-gold">+8809639217058</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Important Notice Board Section -->
+                <section class="py-16 bg-ivory-dark/50 border-y border-gold/20">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="bg-emeraldTheme-dark text-ivory rounded-3xl p-8 lg:p-12 shadow-xl border-2 border-gold/30 relative overflow-hidden">
+                            <div class="absolute -right-10 -bottom-10 opacity-10 text-gold">
+                                <i data-lucide="alert-circle" class="w-64 h-64"></i>
+                            </div>
+                            <div class="max-w-3xl relative z-10 space-y-6">
+                                <div class="inline-flex items-center gap-2 bg-gold text-emeraldTheme-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                                    <i data-lucide="bell" class="w-3.5 h-3.5"></i> গুরুত্বপূর্ণ ঘোষণা ও নিয়মাবলী
+                                </div>
+                                <h2 class="text-2xl sm:text-3xl font-bold text-ivory">রোগী ও দর্শনার্থীদের জন্য জরুরি নির্দেশিকা</h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                                    ${notices.map(notice => `
+                                        <div class="flex items-start gap-3 bg-emeraldTheme/80 p-3.5 rounded-xl border border-gold/20">
+                                            <i data-lucide="check-circle-2" class="w-5 h-5 text-gold shrink-0 mt-0.5"></i>
+                                            <span class="text-sm text-ivory leading-relaxed">${notice}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Services Overview Section -->
+                <section class="py-20 bg-ivory">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                            <h2 class="text-xs uppercase tracking-widest text-gold font-bold">আমাদের সেবাসমূহ</h2>
+                            <h3 class="text-3xl sm:text-4xl font-bold text-emeraldTheme-dark">যে সকল সমস্যার শরয়ী রুকইয়াহ করা হয়</h3>
+                            <p class="text-ivory/80 text-base">কোরআনিক শিফায় বিভিন্ন ক্যাটাগরিতে পবিত্র কোরআনের মাধ্যমে রুকইয়াহ ও পরামর্শ প্রদান করা হয়।</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${serviceCategories.map(cat => `
+                                <div class="bg-white rounded-2xl p-8 shadow-lg border border-gold/20 hover:shadow-2xl transition-all flex flex-col justify-between group">
+                                    <div class="space-y-4">
+                                        <div class="w-14 h-14 rounded-xl bg-emeraldTheme text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-emeraldTheme-dark transition-colors shadow-md">
+                                            <i data-lucide="${cat.icon}" class="w-7 h-7"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-emeraldTheme-dark">${cat.title}</h4>
+                                        <p class="text-sm text-gray-600 leading-relaxed">${cat.desc}</p>
+                                    </div>
+                                    <div class="pt-6 border-t border-gray-100 mt-6 flex items-center justify-between">
+                                        <span class="text-xs font-semibold text-emeraldTheme">${cat.problems.length} টি প্রধান সমস্যা</span>
+                                        <button onclick="router('services')" class="inline-flex items-center gap-1 text-sm font-bold text-gold hover:underline">
+                                            <span>বিস্তারিত দেখুন</span>
+                                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="text-center mt-12">
+                            <button onclick="router('services')" class="inline-flex items-center gap-2 bg-emeraldTheme hover:bg-emeraldTheme-light text-ivory font-bold px-8 py-3.5 rounded-xl shadow-lg transition-all text-base">
+                                <span>সকল সেবাসমূহ ও সমস্যা তালিকা দেখুন</span>
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Preview Section -->
+                <section class="py-20 bg-emeraldTheme-dark text-ivory relative overflow-hidden">
+                    <div class="absolute inset-0 islamic-pattern"></div>
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                            <div class="space-y-6">
+                                <div class="inline-flex items-center gap-2 bg-gold/20 text-gold px-4 py-1 rounded-full text-xs font-bold uppercase">
+                                    <i data-lucide="book-open" class="w-3.5 h-3.5"></i> আমাদের ঐতিহ্য ও মিশন
+                                    </div>
+                                <h2 class="text-3xl sm:text-4xl font-bold text-ivory leading-tight">
+                                    ২০১৩ সাল থেকে আস্থার সাথে কোরআনিক সেবা
+                                </h2>
+                                <p class="text-ivory/90 leading-relaxed">
+                                    কোরআনিক শিফা কোনো প্রচলিত চিকিৎসালয় নয়; এটি একটি পবিত্র কোরআনভিত্তিক রুকইয়াহ কেন্দ্র। আমাদের মূল উদ্দেশ্য হলো সমাজের মানুষকে কুসংস্কার, তুকতাক ও বিদআতি কবিরাজি থেকে মুক্ত করে বিশুদ্ধ সুন্নাহসম্মত উপায়ে কোরআনের মাধ্যমে আত্মিক ও শারীরিক শান্তি লাভে সহায়তা করা।
+                                </p>
+                                <div class="grid grid-cols-2 gap-4 pt-2">
+                                    <div class="bg-emeraldTheme p-4 rounded-xl border border-gold/30">
+                                        <h3 class="text-2xl font-bold text-gold">১০০%</h3>
+                                        <p class="text-xs text-ivory/80">শিরক ও বিদআত মুক্ত পরিবেশ</p>
+                                    </div>
+                                    <div class="bg-emeraldTheme p-4 rounded-xl border border-gold/30">
+                                        <h3 class="text-2xl font-bold text-gold">বিনামূল্যে</h3>
+                                        <p class="text-xs text-ivory/80">সিরিয়াল ও প্রাথমিক গাইডলাইন</p>
+                                    </div>
+                                </div>
+                                <div class="pt-4">
+                                    <button onclick="router('about')" class="bg-gold hover:bg-gold-light text-emeraldTheme-dark font-bold px-8 py-3.5 rounded-xl shadow transition-all flex items-center gap-2">
+                                        <span>আমাদের ইতিহাস ও পদ্ধতি জানুন</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bg-emeraldTheme p-8 rounded-3xl border border-gold/40 shadow-2xl space-y-6">
+                                <h3 class="text-2xl font-bold text-gold border-b border-emeraldTheme-light pb-3">কারা চিকিৎসা নিতে পারবেন?</h3>
+                                <ul class="space-y-4 text-sm text-ivory/90">
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-gold shrink-0 mt-0.5"></i>
+                                        <span>যাঁরা ডাক্তারি চিকিৎসায় কোনো রোগ ধরতে পারছেন না অথচ তীব্র কষ্ট অনুভব করছেন।</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-gold shrink-0 mt-0.5"></i>
+                                        <span>যাঁদের জিন আসর, কালো যাদু বা বদনজরের সুস্পষ্ট লক্ষণ রয়েছে।</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <i data-lucide="check" class="w-5 h-5 text-gold shrink-0 mt-0.5"></i>
+                                        <span>যাঁরা সম্পূর্ণ ইসলামসম্মত নিয়মে কোরআনের কালাম দিয়ে রুকইয়াহ করাতে ইচ্ছুক।</span>
+                                    </li>
+                                </ul>
+                                <div class="bg-emeraldTheme-dark p-4 rounded-xl border border-gold/20 text-xs text-ivory/80">
+                                    <strong>সতর্কতা:</strong> তীব্র জরুরি মেডিকেল সমস্যায় বা দুর্ঘটনাজনিত কারণে অবশ্যই প্রথমে আধুনিক হাসপাতালের জরুরি বিভাগে যোগাযোগ করুন।
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Educational Articles Preview -->
+                <section class="py-20 bg-ivory">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+                            <div>
+                                <h2 class="text-xs uppercase tracking-widest text-gold font-bold mb-2">শিক্ষামূলক প্রবন্ধ</h2>
+                                <h3 class="text-3xl font-bold text-emeraldTheme-dark">পড়ুন ও জানুন গুরুত্বপূর্ণ ইসলামী প্রবন্ধ</h3>
+                            </div>
+                            <button onclick="router('blog')" class="inline-flex items-center gap-2 text-emeraldTheme font-bold hover:text-gold transition-colors">
+                                <span>সকল আর্টিকেল দেখুন</span>
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${blogs.slice(0, 3).map(blog => `
+                                <div onclick="openBlogDetail(${blog.id})" class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gold/20 hover:shadow-2xl transition-all cursor-pointer group flex flex-col justify-between">
+                                    <div>
+                                        <div class="h-48 overflow-hidden relative">
+                                            <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                            <span class="absolute top-4 left-4 bg-emeraldTheme text-gold text-xs px-3 py-1 rounded-full font-semibold shadow">${blog.category}</span>
+                                        </div>
+                                        <div class="p-6 space-y-3">
+                                            <div class="flex items-center gap-3 text-xs text-gray-500">
+                                                <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${blog.date}</span>
+                                                <span>•</span>
+                                                <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> ${blog.readTime}</span>
+                                            </div>
+                                            <h4 class="text-lg font-bold text-emeraldTheme-dark group-hover:text-gold transition-colors line-clamp-2">${blog.title}</h4>
+                                            <p class="text-sm text-gray-600 line-clamp-3">${blog.excerpt}</p>
+                                        </div>
+                                    </div>
+                                    <div class="px-6 pb-6 pt-0">
+                                        <span class="inline-flex items-center gap-1 text-sm font-bold text-gold group-hover:translate-x-1 transition-transform">
+                                            <span>সম্পূর্ণ পড়ুন</span>
+                                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Testimonials Section -->
+                <section class="py-20 bg-ivory-dark/60 border-t border-gold/20">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                            <h2 class="text-xs uppercase tracking-widest text-gold font-bold">রোগীদের অনুভূতি</h2>
+                            <h3 class="text-3xl font-bold text-emeraldTheme-dark">যাঁরা সেবা নিয়েছেন তাঁদের মতামত</h3>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            ${testimonials.map(t => `
+                                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gold/20 relative flex flex-col justify-between">
+                                    <div class="absolute top-6 right-6 text-gold/30">
+                                        <i data-lucide="quote" class="w-10 h-10"></i>
+                                    </div>
+                                    <div class="space-y-4 relative z-10">
+                                        <div class="flex text-gold">
+                                            ${Array(t.rating).fill('<i data-lucide="star" class="w-4 h-4 fill-current"></i>').join('')}
+                                        </div>
+                                        <p class="text-sm text-gray-700 leading-relaxed italic">"${t.comment}"</p>
+                                    </div>
+                                    <div class="pt-6 mt-6 border-t border-gray-100">
+                                        <h4 class="font-bold text-emeraldTheme-dark text-base">${t.name}</h4>
+                                        <p class="text-xs text-gold font-medium">${t.occupation}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section class="py-20 bg-ivory">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center space-y-4 mb-16">
+                            <h2 class="text-xs uppercase tracking-widest text-gold font-bold">সাধারণ জিজ্ঞাসা</h2>
+                            <h3 class="text-3xl font-bold text-emeraldTheme-dark">সচরাচর জিজ্ঞাসিত প্রশ্নাবলী</h3>
+                        </div>
+
+                        <div class="space-y-4">
+                            ${faqs.map((faq, index) => `
+                                <div class="bg-white rounded-2xl p-6 shadow border border-gold/20 transition-all">
+                                    <h4 class="text-lg font-bold text-emeraldTheme-dark flex items-start gap-3">
+                                        <span class="w-7 h-7 rounded-lg bg-emeraldTheme text-gold flex items-center justify-center shrink-0 text-sm font-semibold">${index + 1}</span>
+                                        <span>${faq.q}</span>
+                                    </h4>
+                                    <p class="mt-3 text-sm text-gray-700 leading-relaxed pl-10">${faq.a}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        // ================= PAGE 2: SERVICES PAGE =================
+        function renderServicesPage() {
+            return `
+                <div class="bg-emeraldTheme-dark text-white py-16">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-gold/20 text-gold px-4 py-1 rounded-full text-xs font-bold uppercase">
+                            <i data-lucide="layers" class="w-3.5 h-3.5"></i> আমাদের সেবাসমূহ
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory">রুকইয়াহ সেবা ও ক্যাটাগরিসমূহ</h1>
+                        <p class="text-ivory/80 max-w-2xl mx-auto text-base">
+                            কোরআনিক শিফায় বিভিন্ন জটিলতা ও সমস্যার জন্য কোরআন ও সুন্নাহসম্মত শরয়ী রুকইয়াহ ও পরামর্শ প্রদান করা হয়। নিচে সকল বিভাগ এবং নির্দিষ্ট সমস্যাসমূহের বিবরণ দেওয়া হলো।
+                        </p>
+                    </div>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+                    ${serviceCategories.map((cat, idx) => `
+                        <div id="${cat.id}" class="bg-white rounded-3xl shadow-xl border border-gold/20 p-8 lg:p-12 space-y-8">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-gray-100 pb-6">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-16 h-16 rounded-2xl bg-emeraldTheme text-gold flex items-center justify-center shadow-md shrink-0">
+                                        <i data-lucide="${cat.icon}" class="w-8 h-8"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-bold text-gold uppercase tracking-wider">ক্যাটাগরি ০${idx + 1}</span>
+                                        <h2 class="text-2xl sm:text-3xl font-bold text-emeraldTheme-dark">${cat.title}</h2>
+                                    </div>
+                                </div>
+                                <button onclick="router('appointment')" class="bg-gold hover:bg-gold-light text-emeraldTheme-dark font-bold px-6 py-3 rounded-xl shadow transition-all text-sm flex items-center gap-2 self-start md:self-auto">
+                                    <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+                                    <span>এই সেবার জন্য সিরিয়াল নিন</span>
+                                </button>
+                            </div>
+
+                            <p class="text-gray-700 text-base leading-relaxed">${cat.desc}</p>
+
+                            <div>
+                                <h3 class="text-sm font-bold uppercase tracking-wider text-emeraldTheme mb-4">এই বিভাগের অন্তর্ভুক্ত প্রধান সমস্যাসমূহ:</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    ${cat.problems.map(prob => `
+                                        <div class="flex items-start gap-3 bg-ivory p-4 rounded-xl border border-gold/20">
+                                            <i data-lucide="check-circle" class="w-5 h-5 text-gold shrink-0 mt-0.5"></i>
+                                            <span class="text-sm text-gray-800 leading-relaxed">${prob}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+
+                    <!-- Bottom CTA Box -->
+                    <div class="bg-emeraldTheme-dark text-ivory rounded-3xl p-8 lg:p-12 shadow-2xl text-center space-y-6 border-2 border-gold/40">
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gold">আপনার সমস্যা কি তালিকার বাইরে?</h3>
+                        <p class="text-ivory/80 max-w-2xl mx-auto text-sm sm:text-base">
+                            যদি আপনার সমস্যাটি নির্দিষ্ট ক্যাটাগরিতে খুঁজে না পান, তবুও আমাদের সাথে যোগাযোগ করতে পারেন অথবা সরাসরি সিরিয়াল বুকিং করে চেম্বারে পরামর্শ নিতে পারেন।
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4 pt-2">
+                            <button onclick="router('appointment')" class="bg-gold hover:bg-gold-light text-emeraldTheme-dark font-bold px-8 py-3.5 rounded-xl shadow transition-all text-base flex items-center gap-2">
+                                <i data-lucide="calendar" class="w-5 h-5"></i>
+                                <span>সিরিয়াল বুকিং করুন</span>
+                            </button>
+                            <button onclick="router('contact')" class="bg-emeraldTheme hover:bg-emeraldTheme-light border border-gold/40 text-ivory font-semibold px-8 py-3.5 rounded-xl shadow transition-all text-base flex items-center gap-2">
+                                <i data-lucide="phone-call" class="w-5 h-5"></i>
+                                <span>যোগাযোগ করুন</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ================= PAGE 3: ABOUT PAGE =================
+        function renderAboutPage() {
+            return `
+                <div class="bg-emeraldTheme-dark text-white py-16">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-gold/20 text-gold px-4 py-1 rounded-full text-xs font-bold uppercase">
+                            <i data-lucide="info" class="w-3.5 h-3.5"></i> আমাদের পরিচিতি ও ইতিহাস
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory">কোরআনিক শিফা সম্পর্কে জানুন</h1>
+                        <p class="text-ivory/80 max-w-2xl mx-auto text-base">
+                            ২০১৩ সাল থেকে প্রতিষ্ঠিত পবিত্র কুরআন ও সুন্নাহ ভিত্তিক রুকইয়াহ কেন্দ্র।
+                        </p>
+                    </div>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
+                    <!-- History & Mission -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <h2 class="text-3xl font-bold text-emeraldTheme-dark">প্রতিষ্ঠা ও পথচলা (২০১৩ থেকে বর্তমান)</h2>
+                            <p class="text-gray-700 text-base leading-relaxed">
+                                সমাজে তাবিজ-কবচ, কবিরাজি ও বিভিন্ন শিরকি ঝাড়ফুঁকের দৌরাত্ম্য যখন সাধারণ মানুষকে দ্বীন ও ইমান থেকে দূরে সরিয়ে দিচ্ছিল, সেই প্রেক্ষাপটে ২০১৩ সালে প্রতিষ্ঠিত হয় <strong>কোরআনিক শিফা</strong>। আমাদের উদ্দেশ্য হলো সম্পূর্ণ সুন্নাহসম্মত এবং শরিয়ত সমর্থিত পন্থায় কোরআনের আয়াতের সাহায্যে মানুষের শারীরিক ও মানসিক কষ্টের উপশম করা।
+                            </p>
+                            <p class="text-gray-700 text-base leading-relaxed">
+                                দীর্ঘ এক দশকেরও বেশি সময় ধরে আমরা হাজারো মানুষকে সফলভাবে রুকইয়াহ সেবা প্রদান করে আসছি, যাঁদের মধ্যে অনেকেই চিকিৎসায় নিরাশ হয়ে কোরআনের আলোয় সুস্থতা লাভ করেছেন।
+                            </p>
+                        </div>
+                        <div class="bg-white p-8 rounded-3xl shadow-xl border border-gold/20 space-y-6">
+                            <h3 class="text-xl font-bold text-emeraldTheme-dark border-b border-gray-100 pb-3">আমাদের মূল লক্ষ্য ও আদর্শ</h3>
+                            <ul class="space-y-4 text-sm text-gray-700">
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-gold shrink-0 mt-0.5"></i>
+                                    <span>১০০% শিরক, কুফর ও বিদআত মুক্ত রুকইয়াহ নিশ্চিত করা।</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-gold shrink-0 mt-0.5"></i>
+                                    <span>রোগীদের সঠিক ইসলামিক আকিদা ও দোয়ার মাধ্যমে আল্লাহর ওপর তাওয়াক্কুল বাড়াতে উদ্বুদ্ধ করা।</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i data-lucide="check-circle" class="w-5 h-5 text-gold shrink-0 mt-0.5"></i>
+                                    <span>সম্পূর্ণ বিনামূল্যে সিরিয়াল প্রদান ও সেবা গ্রহণে স্বচ্ছতা বজায় রাখা।</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Diagnostic & Approach -->
+                    <div class="bg-white rounded-3xl shadow-xl border border-gold/20 p-8 lg:p-12 space-y-8">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-emeraldTheme-dark text-center">আমাদের রুকইয়াহ ও নির্ণয় পদ্ধতি</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="bg-ivory p-6 rounded-2xl border border-gold/20 space-y-3">
+                                <div class="w-12 h-12 rounded-xl bg-emeraldTheme text-gold flex items-center justify-center font-bold text-lg">০১</div>
+                                <h3 class="text-lg font-bold text-emeraldTheme-dark">লক্ষণ পর্যালোচনা</h3>
+                                <p class="text-sm text-gray-700">রোগীর শারীরিক ও মানসিক উপসর্গের বিবরণ এবং পূর্ববর্তী চিকিৎসার ইতিহাস পর্যালোচনা করা হয়।</p>
+                            </div>
+                            <div class="bg-ivory p-6 rounded-2xl border border-gold/20 space-y-3">
+                                <div class="w-12 h-12 rounded-xl bg-emeraldTheme text-gold flex items-center justify-center font-bold text-lg">০২</div>
+                                <h3 class="text-lg font-bold text-emeraldTheme-dark">কোরআনিক তেলাওয়াত</h3>
+                                <p class="text-sm text-gray-700">সুনির্দিষ্ট কোরআনের আয়াত তেলাওয়াত করে রোগীর প্রতিক্রিয়া পর্যবেক্ষণ করা হয়।</p>
+                            </div>
+                            <div class="bg-ivory p-6 rounded-2xl border border-gold/20 space-y-3">
+                                <div class="w-12 h-12 rounded-xl bg-emeraldTheme text-gold flex items-center justify-center font-bold text-lg">০৩</div>
+                                <h3 class="text-lg font-bold text-emeraldTheme-dark">পরামর্শ ও গাইডলাইন</h3>
+                                <p class="text-sm text-gray-700">নিয়মিত জিকির, নামাজ এবং সুন্নাহসম্মত আমলের মাধ্যমে নিরাময় অব্যাহত রাখার দিকনির্দেশনা দেওয়া হয়।</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chamber Locations & Google Maps Reference -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div class="bg-emeraldTheme-dark text-ivory rounded-3xl p-8 lg:p-10 shadow-xl space-y-6">
+                            <h3 class="text-2xl font-bold text-gold">প্রধান চেম্বারের ঠিকানা</h3>
+                            <div class="space-y-4 text-sm text-ivory/90">
+                                <p class="flex items-start gap-3">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-gold shrink-0 mt-0.5"></i>
+                                    <span>বাড়ি: ১৩ (অস্থায়ী নিবাস), রোড -১, চিটাগাংরোড, মাদানীনগর, নারায়ণগঞ্জ।</span>
+                                </p>
+                                <p class="flex items-center gap-3">
+                                    <i data-lucide="phone" class="w-5 h-5 text-gold shrink-0"></i>
+                                    <span class="font-bold text-gold">+8809639217058</span>
+                                </p>
+                                <p class="flex items-center gap-3">
+                                    <i data-lucide="clock" class="w-5 h-5 text-gold shrink-0"></i>
+                                    <span>শনিবার থেকে বৃহস্পতিবার (শুক্রবার ও সোমবার বন্ধ)</span>
+                                </p>
+                            </div>
+                            <div class="pt-4 border-t border-emeraldTheme-light">
+                                <p class="text-xs text-ivory/70">উল্লেখ্য: আমাদের একটি সিলেট শাখা রয়েছে।</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-3xl shadow-xl border border-gold/20 p-8 lg:p-10 space-y-6 flex flex-col justify-between">
+                            <div class="space-y-4">
+                                <h3 class="text-2xl font-bold text-emeraldTheme-dark">গুগল ম্যাপ ও লোকেশন</h3>
+                                <p class="text-sm text-gray-700">
+                                    সরাসরি চেম্বারে আসার জন্য মাদানীনগর মাদরাসা রোড বা চিটাগাংরোড এলাকা থেকে সহজে যাতায়াত করা যায়। সঠিক লোকেশনের জন্য নিচের লিংকে ক্লিক করতে পারেন।
+                                </p>
+                            </div>
+                            <a href="https://maps.google.com/?q=Madaninagar+Chittagong+Road+Narayanganj" target="_blank" class="w-full bg-emeraldTheme hover:bg-emeraldTheme-light text-ivory font-bold py-3.5 rounded-xl shadow text-center flex items-center justify-center gap-2 transition-colors">
+                                <i data-lucide="map" class="w-5 h-5"></i>
+                                <span>গুগল ম্যাপে লোকেশন দেখুন</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ================= PAGE 4: BLOG PAGE =================
+        function renderBlogPage() {
+            return `
+                <div class="bg-emeraldTheme-dark text-white py-16">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-gold/20 text-gold px-4 py-1 rounded-full text-xs font-bold uppercase">
+                            <i data-lucide="book-open" class="w-3.5 h-3.5"></i> শিক্ষামূলক প্রবন্ধ
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory">ইসলামী আর্টিকেল ও রুকইয়াহ ব্লগ</h1>
+                        <p class="text-ivory/80 max-w-2xl mx-auto text-base">
+                            রুকইয়াহ, আকিদা, ব্ল্যাক ম্যাজিক এবং সুন্নাহসম্মত চিকিৎসা সম্পর্কিত গুরুত্বপূর্ণ শিক্ষামূলক লেখা।
+                        </p>
+                    </div>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+                    <!-- Featured Article Banner -->
+                    <div onclick="openBlogDetail(${blogs[0].id})" class="bg-white rounded-3xl overflow-hidden shadow-xl border border-gold/20 grid grid-cols-1 lg:grid-cols-12 cursor-pointer group hover:shadow-2xl transition-all">
+                        <div class="lg:col-span-6 h-64 lg:h-auto overflow-hidden relative">
+                            <img src="${blogs[0].image}" alt="${blogs[0].title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <span class="absolute top-4 left-4 bg-gold text-emeraldTheme-dark text-xs font-bold px-3 py-1 rounded-full shadow">ফিচার্ড আর্টিকেল</span>
+                        </div>
+                        <div class="lg:col-span-6 p-8 lg:p-12 flex flex-col justify-between space-y-6">
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3 text-xs text-gray-500">
+                                    <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${blogs[0].date}</span>
+                                    <span>•</span>
+                                    <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> ${blogs[0].readTime}</span>
+                                    <span>•</span>
+                                    <span class="text-gold font-semibold">${blogs[0].category}</span>
+                                </div>
+                                <h2 class="text-2xl sm:text-3xl font-bold text-emeraldTheme-dark group-hover:text-gold transition-colors">${blogs[0].title}</h2>
+                                <p class="text-gray-600 text-base leading-relaxed">${blogs[0].excerpt}</p>
+                            </div>
+                            <div>
+                                <span class="inline-flex items-center gap-2 font-bold text-gold text-base group-hover:translate-x-1 transition-transform">
+                                    <span>সম্পূর্ণ প্রবন্ধ পড়ুন</span>
+                                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Article Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        ${blogs.slice(1).map(blog => `
+                            <div onclick="openBlogDetail(${blog.id})" class="bg-white rounded-2xl overflow-hidden shadow-lg border border-gold/20 hover:shadow-2xl transition-all cursor-pointer group flex flex-col justify-between">
+                                <div>
+                                    <div class="h-48 overflow-hidden relative">
+                                        <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                        <span class="absolute top-4 left-4 bg-emeraldTheme text-gold text-xs px-3 py-1 rounded-full font-semibold shadow">${blog.category}</span>
+                                    </div>
+                                    <div class="p-6 space-y-3">
+                                        <div class="flex items-center gap-3 text-xs text-gray-500">
+                                            <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${blog.date}</span>
+                                            <span>•</span>
+                                            <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> ${blog.readTime}</span>
+                                        </div>
+                                        <h3 class="text-lg font-bold text-emeraldTheme-dark group-hover:text-gold transition-colors line-clamp-2">${blog.title}</h3>
+                                        <p class="text-sm text-gray-600 line-clamp-3">${blog.excerpt}</p>
+                                    </div>
+                                </div>
+                                <div class="px-6 pb-6 pt-0">
+                                    <span class="inline-flex items-center gap-1 text-sm font-bold text-gold group-hover:translate-x-1 transition-transform">
+                                        <span>সম্পূর্ণ পড়ুন</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function openBlogDetail(id) {
+            state.selectedBlogId = id;
+            router('blog');
+        }
+
+        function renderBlogDetailPage(id) {
+            const blog = blogs.find(b => b.id === id) || blogs[0];
+            return `
+                <div class="bg-emeraldTheme-dark text-white py-12">
+                    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+                        <button onclick="state.selectedBlogId = null; router('blog');" class="inline-flex items-center gap-2 text-gold hover:underline text-sm font-semibold">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                            <span>সকল আর্টিকেলে ফিরে যান</span>
+                        </button>
+                        <div class="flex items-center gap-3 text-xs text-ivory/70 pt-2">
+                            <span class="bg-gold text-emeraldTheme-dark font-bold px-3 py-1 rounded-full">${blog.category}</span>
+                            <span><i data-lucide="calendar" class="w-3.5 h-3.5 inline"></i> ${blog.date}</span>
+                            <span>•</span>
+                            <span><i data-lucide="clock" class="w-3.5 h-3.5 inline"></i> ${blog.readTime} পড়ার সময়</span>
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory leading-tight">${blog.title}</h1>
+                    </div>
+                </div>
+
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-10">
+                    <div class="rounded-3xl overflow-hidden shadow-2xl border border-gold/20 h-96">
+                        <img src="${blog.image}" alt="${blog.title}" class="w-full h-full object-cover">
+                    </div>
+
+                    <div class="bg-white rounded-3xl shadow-xl border border-gold/20 p-8 sm:p-12 space-y-6 text-gray-800 text-lg leading-relaxed">
+                        <p class="font-semibold text-emeraldTheme text-xl leading-relaxed">${blog.excerpt}</p>
+                        <hr class="border-gold/20 my-6">
+                        <p>${blog.content}</p>
+                        <p>কোরআনিক শিফায় আমরা সর্বদা চেষ্টা করি মানুষকে সঠিক ও বিশুদ্ধ ইসলামী জ্ঞান প্রদান করতে যাতে তারা কোনো প্রকার বিভ্রান্তি ছাড়াই সুন্নাহসম্মত উপায়ে সুস্থতা লাভ করতে পারেন। আল্লাহ তাআলা আমাদের সকলকে সকল প্রকার কুসংস্কার ও শিরক থেকে মুক্ত রাখুন এবং কোরআনের আলোয় জীবন পরিচালিত করার তাওফিক দান করুন। আমিন।</p>
+                    </div>
+
+                    <div class="flex items-center justify-between bg-emeraldTheme-dark text-ivory p-6 rounded-2xl border border-gold/30">
+                        <div>
+                            <h4 class="font-bold text-gold text-base">আর্টিকেলটি শেয়ার করুন</h4>
+                            <p class="text-xs text-ivory/70">অন্যদের দ্বীন ও উপকারের স্বার্থে শেয়ার করুন।</p>
+                        </div>
+                        <button onclick="alert('আর্টিকেল লিংক কপি করা হয়েছে!')" class="bg-gold text-emeraldTheme-dark font-bold px-5 py-2.5 rounded-xl text-sm shadow hover:bg-gold-light transition-colors flex items-center gap-2">
+                            <i data-lucide="share-2" class="w-4 h-4"></i>
+                            <span>লিংক কপি করুন</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ================= PAGE 5: INTERVIEW PAGE =================
+        function renderInterviewPage() {
+            return `
+                <div class="bg-emeraldTheme-dark text-white py-16">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-gold/20 text-gold px-4 py-1 rounded-full text-xs font-bold uppercase">
+                            <i data-lucide="message-square" class="w-3.5 h-3.5"></i> সাক্ষাৎকার ফর্ম
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory">সাক্ষাৎকার ও তথ্য প্রদান ফর্ম</h1>
+                        <p class="text-ivory/80 max-w-2xl mx-auto text-base">
+                            রোগীর প্রাথমিক তথ্য ও সাক্ষাৎকার সম্পর্কিত তথ্যাদি জমা দেওয়ার জন্য নিচের ফর্মটি পূরণ করুন।
+                        </p>
+                    </div>
+                </div>
+
+                <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                    <div class="bg-white rounded-3xl shadow-xl border border-gold/20 p-8 sm:p-12">
+                        ${state.interviewSubmitted ? `
+                            <div class="text-center space-y-6 py-12">
+                                <div class="w-20 h-20 rounded-full bg-emeraldTheme text-gold mx-auto flex items-center justify-center shadow-lg">
+                                    <i data-lucide="check" class="w-10 h-10"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-emeraldTheme-dark">সাক্ষাৎকারের তথ্য সফলভাবে জমা হয়েছে!</h3>
+                                <p class="text-gray-600 max-w-md mx-auto text-sm">
+                                    আপনার তথ্য আমাদের কাছে সংরক্ষিত হয়েছে। খুব শীঘ্রই আমাদের প্রতিনিধি আপনার সাথে যোগাযোগ করবেন।
+                                </p>
+                                <button onclick="state.interviewSubmitted = false; router('interview');" class="bg-gold text-emeraldTheme-dark font-bold px-8 py-3 rounded-xl shadow">
+                                    নতুন ফর্ম পূরণ করুন
+                                </button>
+                            </div>
+                        ` : `
+                            <form onsubmit="handleInterviewSubmit(event)" class="space-y-6">
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-bold text-emeraldTheme-dark">পূর্ণ নাম (Full Name) *</label>
+                                    <input type="text" id="int-name" required placeholder="আপনার সম্পূর্ণ নাম লিখুন" class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme">
+                                </div>
+
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-bold text-emeraldTheme-dark">মোবাইল নম্বর (Mobile Number) *</label>
+                                    <input type="tel" id="int-phone" required placeholder="যেমন: 01700000000" class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme">
+                                </div>
+
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-bold text-emeraldTheme-dark">সাক্ষাৎকার ও সমস্যার বিবরণ (Message / Information) *</label>
+                                    <textarea id="int-msg" rows="5" required placeholder="আপনার সমস্যা বা সাক্ষাৎকারের বিস্তারিত বিবরণ এখানে লিখুন..." class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme"></textarea>
+                                </div>
+
+                                <div class="bg-ivory p-4 rounded-xl border border-gold/20 text-xs text-gray-600">
+                                    <strong>সতর্কতা:</strong> এটি কোনো অনলাইন চিকিৎসা নয়। সাক্ষাৎকার বা তথ্য জমা দেওয়ার পর চেম্বারে উপস্থিত হয়ে চিকিৎসা নিশ্চিত করতে হবে।
+                                </div>
+
+                                <button type="submit" class="w-full bg-gold hover:bg-gold-light text-emeraldTheme-dark font-bold py-4 rounded-xl shadow-lg transition-all text-base flex items-center justify-center gap-2">
+                                    <i data-lucide="send" class="w-5 h-5"></i>
+                                    <span>সাক্ষাৎকারের তথ্য জমা দিন</span>
+                                </button>
+                            </form>
+                        `}
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleInterviewSubmit(e) {
+            e.preventDefault();
+            state.interviewSubmitted = true;
+            renderApp();
+        }
+
+        // ================= PAGE 6: CONTACT PAGE =================
+        function renderContactPage() {
+            return `
+                <div class="bg-emeraldTheme-dark text-white py-16">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-gold/20 text-gold px-4 py-1 rounded-full text-xs font-bold uppercase">
+                            <i data-lucide="phone-call" class="w-3.5 h-3.5"></i> যোগাযোগ করুন
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory">আমাদের সাথে যোগাযোগ করুন</h1>
+                        <p class="text-ivory/80 max-w-2xl mx-auto text-base">
+                            যেকোনো তথ্যের জন্য আমাদের অফিসিয়াল নম্বরে কল করুন অথবা নিচের ফর্মের মাধ্যমে বার্তা পাঠান।
+                        </p>
+                    </div>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <!-- Contact Info Cards -->
+                        <div class="lg:col-span-5 space-y-6">
+                            <div class="bg-emeraldTheme-dark text-ivory rounded-3xl p-8 shadow-xl border border-gold/30 space-y-6">
+                                <h3 class="text-2xl font-bold text-gold border-b border-emeraldTheme-light pb-4">যোগাযোগের মাধ্যম</h3>
+                                
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-gold text-emeraldTheme-dark flex items-center justify-center shrink-0">
+                                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-ivory">প্রধান চেম্বার</h4>
+                                        <p class="text-sm text-ivory/80 mt-1">বাড়ি: ১৩ (অস্থায়ী নিবাস), রোড -১, চিটাগাংরোড, মাদানীনগর, নারায়ণগঞ্জ। (সিলেট শাখা রয়েছে)।</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-gold text-emeraldTheme-dark flex items-center justify-center shrink-0">
+                                        <i data-lucide="phone" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-ivory">হেল্পলাইন নম্বর</h4>
+                                        <p class="text-sm text-gold font-semibold mt-1">+8809639217058</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-gold text-emeraldTheme-dark flex items-center justify-center shrink-0">
+                                        <i data-lucide="mail" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-ivory">ইমেইল ঠিকানা</h4>
+                                        <p class="text-sm text-ivory/80 mt-1">info@qshifa.com</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-start gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-gold text-emeraldTheme-dark flex items-center justify-center shrink-0">
+                                        <i data-lucide="clock" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-ivory">সময়সূচী</h4>
+                                        <p class="text-sm text-ivory/80 mt-1">শনিবার থেকে বৃহস্পতিবার (শুক্রবার ও সোমবার বন্ধ)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <div class="lg:col-span-7">
+                            <div class="bg-white rounded-3xl shadow-xl border border-gold/20 p-8 sm:p-12">
+                                <h3 class="text-2xl font-bold text-emeraldTheme-dark mb-6">আমাদের বার্তা পাঠান</h3>
+                                ${state.contactSubmitted ? `
+                                    <div class="text-center space-y-4 py-8">
+                                        <div class="w-16 h-16 rounded-full bg-emeraldTheme text-gold mx-auto flex items-center justify-center">
+                                            <i data-lucide="check" class="w-8 h-8"></i>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-emeraldTheme-dark">আপনার বার্তা সফলভাবে পাঠানো হয়েছে!</h4>
+                                        <p class="text-sm text-gray-600">খুব শীঘ্রই আমরা আপনার সাথে যোগাযোগ করব।</p>
+                                        <button onclick="state.contactSubmitted = false; router('contact');" class="bg-gold text-emeraldTheme-dark font-bold px-6 py-2.5 rounded-xl text-sm">নতুন বার্তা পাঠান</button>
+                                    </div>
+                                ` : `
+                                    <form onsubmit="handleContactSubmit(event)" class="space-y-6">
+                                        <div class="space-y-2">
+                                            <label class="block text-sm font-bold text-emeraldTheme-dark">আপনার নাম *</label>
+                                            <input type="text" required placeholder="আপনার পূর্ণ নাম লিখুন" class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme">
+                                        </div>
+                                        <div class="space-y-2">
+                                            <label class="block text-sm font-bold text-emeraldTheme-dark">ইমেইল বা মোবাইল *</label>
+                                            <input type="text" required placeholder="আপনার ইমেইল বা ফোন নম্বর" class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme">
+                                        </div>
+                                        <div class="space-y-2">
+                                            <label class="block text-sm font-bold text-emeraldTheme-dark">আপনার বার্তা *</label>
+                                            <textarea rows="5" required placeholder="আপনার মতামত বা জিজ্ঞাসা এখানে লিখুন..." class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme"></textarea>
+                                        </div>
+                                        <button type="submit" class="w-full bg-gold hover:bg-gold-light text-emeraldTheme-dark font-bold py-4 rounded-xl shadow-lg transition-all text-base flex items-center justify-center gap-2">
+                                            <i data-lucide="send" class="w-5 h-5"></i>
+                                            <span>বার্তা পাঠান</span>
+                                        </button>
+                                    </form>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            state.contactSubmitted = true;
+            renderApp();
+        }
+
+        // ================= PAGE 7: APPOINTMENT PAGE =================
+        function renderAppointmentPage() {
+            return `
+                <div class="bg-emeraldTheme-dark text-white py-16">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-gold/20 text-gold px-4 py-1 rounded-full text-xs font-bold uppercase">
+                            <i data-lucide="calendar" class="w-3.5 h-3.5"></i> সিরিয়াল বুকিং
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-ivory">ফ্রি সিরিয়াল বুকিং ফর্ম</h1>
+                        <p class="text-ivory/80 max-w-2xl mx-auto text-base">
+                            চিকিৎসা নিতে হলে অবশ্যই সিরিয়াল নিতে হবে (সিরিয়ালের জন্য কোনো ফি নেওয়া হয় না)। মনে রাখবেন, আমাদের কোনো অনলাইন চিকিৎসা সেবা নেই; সশরীরে চেম্বারে উপস্থিত হতে হবে।
+                        </p>
+                    </div>
+                </div>
+
+                <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                    <div class="bg-white rounded-3xl shadow-xl border border-gold/20 p-8 sm:p-12">
+                        ${state.bookingSubmitted ? `
+                            <div class="text-center space-y-6 py-12">
+                                <div class="w-20 h-20 rounded-full bg-emeraldTheme text-gold mx-auto flex items-center justify-center shadow-lg">
+                                    <i data-lucide="check" class="w-10 h-10"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-emeraldTheme-dark">সিরিয়াল বুকিং সফলভাবে জমা হয়েছে!</h3>
+                                <p class="text-gray-600 max-w-md mx-auto text-sm">
+                                    আপনার সিরিয়াল অনুরোধটি গ্রহণ করা হয়েছে। আমাদের প্রতিনিধি শীঘ্রই আপনার মোবাইল নম্বরে সিরিয়াল নম্বর ও সময় নিশ্চিত করবেন। (শুক্রবার ও সোমবার চেম্বার বন্ধ)।
+                                </p>
+                                <button onclick="state.bookingSubmitted = false; router('appointment');" class="bg-gold text-emeraldTheme-dark font-bold px-8 py-3 rounded-xl shadow">
+                                    নতুন সিরিয়াল বুকিং করুন
+                                </button>
+                            </div>
+                        ` : `
+                            <form onsubmit="handleAppointmentSubmit(event)" class="space-y-6">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <label class="block text-sm font-bold text-emeraldTheme-dark">রোগীর পূর্ণ নাম (Full Name) *</label>
+                                        <input type="text" id="app-name" required placeholder="রোগীর নাম লিখুন" class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="block text-sm font-bold text-emeraldTheme-dark">মোবাইল নম্বর (Mobile Number) *</label>
+                                        <input type="tel" id="app-phone" required placeholder="01700000000" class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <label class="block text-sm font-bold text-emeraldTheme-dark">পিতার নাম (Father's Name) *</label>
+                                        <input type="text" id="app-father" required placeholder="পিতার নাম লিখুন" class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="block text-sm font-bold text-emeraldTheme-dark">মাতার নাম (Mother's Name) *</label>
+                                        <input type="text" id="app-mother" required placeholder="মাতার নাম লিখুন" class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme">
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <label class="block text-sm font-bold text-emeraldTheme-dark">ইমেইল ঠিকানা (Email)</label>
+                                        <input type="email" id="app-email" placeholder="example@gmail.com" class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="block text-sm font-bold text-emeraldTheme-dark">পছন্দসই তারিখ (Date) *</label>
+                                        <input type="date" id="app-date" required class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme">
+                                    </div>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <label class="block text-sm font-bold text-emeraldTheme-dark">সমস্যার সংক্ষিপ্ত বিবরণ (Problem Description) *</label>
+                                    <textarea id="app-desc" rows="4" required placeholder="আপনার শারীরিক বা মানসিক সমস্যা সংক্ষেপে লিখুন..." class="w-full px-4 py-3 bg-ivory border border-gold/30 rounded-xl text-sm focus:outline-none focus:border-emeraldTheme"></textarea>
+                                </div>
+
+                                <div class="bg-ivory p-4 rounded-xl border border-gold/20 text-xs text-gray-700 space-y-1">
+                                    <strong>গুরুত্বপূর্ণ নিয়মাবলী:</strong>
+                                    <ul class="list-disc list-inside space-y-1 text-gray-600 pt-1">
+                                        <li>সিরিয়াল নিতে কোনো ফি নেওয়া হয় না।</li>
+                                        <li>প্রতি শুক্রবার ও সোমবার চেম্বার বন্ধ থাকে।</li>
+                                        <li>অনলাইন কোনো চিকিৎসা সেবা দেওয়া হয় না; সশরীরে উপস্থিত হতে হবে।</li>
+                                    </ul>
+                                </div>
+
+                                <button type="submit" class="w-full bg-gold hover:bg-gold-light text-emeraldTheme-dark font-bold py-4 rounded-xl shadow-lg transition-all text-base flex items-center justify-center gap-2">
+                                    <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                                    <span>বিনামূল্যে সিরিয়াল বুকিং নিশ্চিত করুন</span>
+                                </button>
+                            </form>
+                        `}
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleAppointmentSubmit(e) {
+            e.preventDefault();
+            state.bookingSubmitted = true;
+            renderApp();
+        }
+
+        function renderNotFoundPage() {
+            return `
+                <div class="py-32 text-center space-y-6">
+                    <div class="w-20 h-20 rounded-full bg-emeraldTheme text-gold mx-auto flex items-center justify-center">
+                        <i data-lucide="alert-triangle" class="w-10 h-10"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold text-emeraldTheme-dark">পৃষ্ঠাটি খুঁজে পাওয়া যায়নি (404)</h2>
+                    <p class="text-gray-600 text-sm">আপনি যে পেজটি খুঁজছেন তা বিদ্যমান নয় বা সরানো হয়েছে।</p>
+                    <button onclick="router('home')" class="bg-gold text-emeraldTheme-dark font-bold px-6 py-3 rounded-xl shadow">
+                        প্রচ্ছদে ফিরে যান
+                    </button>
+                </div>
+            `;
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            const email = document.getElementById('newsletter-email').value;
+            const msg = document.getElementById('newsletter-msg');
+            msg.textContent = "আলহামদুলিল্লাহ! আপনার ইমেইল সফলভাবে সাবস্ক্রাইব হয়েছে।";
+            document.getElementById('newsletter-email').value = '';
+            setTimeout(() => { msg.textContent = ""; }, 5000);
+        }
+
+        // Initialize App on Window Load
+        window.onload = function () {
+            router('home');
+        };
+    </script>
+</body>
+</html>
